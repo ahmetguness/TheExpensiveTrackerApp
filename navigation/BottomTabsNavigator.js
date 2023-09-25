@@ -4,17 +4,23 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import { GlobalStyles } from '../constants/styles';
 import { Ionicons } from '@expo/vector-icons';
+import IconButton from '../components/UI/IconButton';
 
 
 const BottomTabs = createBottomTabNavigator();
 
 function BottomTabsNavigator() {
-    return <BottomTabs.Navigator screenOptions={{
-        headerStyle: { backgroundColor: GlobalStyles.colors.primary500 },
-        headerTintColor: 'white',
-        tabBarStyle: { backgroundColor: GlobalStyles.colors.primary500 },
-        tabBarActiveTintColor: GlobalStyles.colors.accent500,
-    }} >
+    return <BottomTabs.Navigator screenOptions={({ navigation }) => (
+        {
+            headerStyle: { backgroundColor: GlobalStyles.colors.primary500 },
+            headerTintColor: 'white',
+            tabBarStyle: { backgroundColor: GlobalStyles.colors.primary500 },
+            tabBarActiveTintColor: GlobalStyles.colors.accent500,
+            headerRight: ({ tintColor }) => <IconButton icon={'add'} color={tintColor} size={24} onPressFunc={() => {
+                navigation.navigate('ManageExpense');
+            }} />
+        }
+    )} >
         <BottomTabs.Screen
             name='RecentExpenses'
             component={RecentExpenses}
