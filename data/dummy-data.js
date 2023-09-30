@@ -27,6 +27,6 @@ export const DUMMY_EXPENSES = [
         id: 'e5',
         description: 'A gamepad',
         amount: 55.99,
-        date: new Date('2023-11-23'),
+        date: new Date('2023-09-29'),
     },
 ]
